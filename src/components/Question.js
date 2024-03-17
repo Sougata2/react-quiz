@@ -1,16 +1,13 @@
 import Options from "./Options";
+import { useQuestion } from "./QuestionContext";
 
-function Question({ question, dispatch, answer }) {
+function Question() {
+  const { questions, index } = useQuestion();
+  const question = questions[index];
   return (
     <div>
       <h4>{question.question}</h4>
-      <Options
-        options={question.options}
-        key={question}
-        dispatch={dispatch}
-        answer={answer}
-        correctOption={question.correctOption}
-      />
+      <Options />
     </div>
   );
 }

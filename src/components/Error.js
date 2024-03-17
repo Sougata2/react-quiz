@@ -1,8 +1,15 @@
+import { useQuestion } from "./QuestionContext";
+
 function Error() {
+  const { status } = useQuestion();
   return (
-    <p className="error">
-      <span>💥</span> There was an error fecthing questions.
-    </p>
+    <>
+      {status === "error" && (
+        <p className="error">
+          <span>💥</span> There was an error fecthing questions.
+        </p>
+      )}
+    </>
   );
 }
 

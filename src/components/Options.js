@@ -1,4 +1,10 @@
-function Options({ options, dispatch, answer, correctOption }) {
+import { useQuestion } from "./QuestionContext";
+
+function Options() {
+  const { questions, newAnswer, answer, index } = useQuestion();
+  const question = questions[index];
+  const options = question.options;
+  const correctOption = question.correctOption;
   const hasAnswered = answer !== null;
   return (
     <div className="options">
@@ -9,7 +15,7 @@ function Options({ options, dispatch, answer, correctOption }) {
           }`}
           key={option}
           disabled={hasAnswered}
-          onClick={(e) => dispatch({ type: "newAnswer", payload: index })}
+          onClick={() => newAnswer(index)}
         >
           {option}
         </button>
